@@ -7,11 +7,11 @@ import rootReducer from '../reducers';
 
 import * as counterActions from '../actions/counter';
 
-declare var window: Window & {
+declare const window: Window & {
   __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?(a: any): void;
 };
 
-declare var module: NodeModule & {
+declare const module: NodeModule & {
   hot?: {
     accept(...args: any[]): any;
   }
@@ -21,7 +21,7 @@ const actionCreators = Object.assign({}, counterActions, {
   push
 });
 
-const logger = createLogger({
+const logger = (<any>createLogger)({
   level: 'info',
   collapsed: true
 });
