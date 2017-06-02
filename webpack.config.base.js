@@ -12,7 +12,7 @@ module.exports = validate({
   module: {
     loaders: [{
       test: /\.tsx?$/,
-      loaders: ['ts-loader'],
+      loaders: ['react-hot-loader', 'ts-loader'],
       exclude: /node_modules/
     }, {
       test: /\.json$/,
