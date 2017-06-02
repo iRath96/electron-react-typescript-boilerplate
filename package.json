@@ -90,7 +90,6 @@
   "homepage": "https://github.com/irath96/electron-react-typescript-boilerplate#readme",
   "devDependencies": {
     "@types/chai": "^3.4.34",
-    "@types/electron": "^1.4.30",
     "@types/enzyme": "^2.5.39",
     "@types/jsdom": "^2.0.29",
     "@types/mocha": "^2.2.34",
