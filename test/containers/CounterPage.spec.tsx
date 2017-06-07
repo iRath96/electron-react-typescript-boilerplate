@@ -5,13 +5,14 @@ import { Provider } from 'react-redux';
 import CounterPage from '../../app/containers/CounterPage';
 import { IState } from '../../app/reducers';
 
+const CounterPageAny = CounterPage as any;
 let configureStore = require('../../app/store/configureStore');
 
 function setup(initialState?: IState) {
   const store = configureStore(initialState);
   const app = mount(
     <Provider store={store}>
-      <CounterPage />
+      <CounterPageAny />
     </Provider>
   );
   return {

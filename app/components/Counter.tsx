@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { Link } from 'react-router';
+import { RouteComponentProps } from 'react-router';
+import { Link } from 'react-router-dom';
 
 let styles = require('./Counter.scss');
 
-interface IProps {
+export interface IProps extends RouteComponentProps<any> {
   increment(): void,
   incrementIfOdd(): void,
   incrementAsync(): void,
@@ -11,7 +12,7 @@ interface IProps {
   counter: number
 }
 
-class Counter extends React.Component<IProps, void> {
+export class Counter extends React.Component<IProps, void> {
   render() {
     const { increment, incrementIfOdd, incrementAsync, decrement, counter } = this.props;
     return (

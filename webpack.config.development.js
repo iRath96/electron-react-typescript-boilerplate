@@ -17,6 +17,7 @@ module.exports = validate(merge(baseConfig, {
   devtool: 'inline-source-map',
 
   entry: [
+    'react-hot-loader/patch',
     `webpack-hot-middleware/client?path=http://localhost:${port}/__webpack_hmr&reload=true`,
     './app/index'
   ],

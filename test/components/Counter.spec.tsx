@@ -4,6 +4,8 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 import Counter from '../../app/components/Counter';
 
+const CounterAny = Counter as any;
+
 function setup() {
   const actions = {
     increment: spy(),
@@ -11,7 +13,9 @@ function setup() {
     incrementAsync: spy(),
     decrement: spy()
   };
-  const component = shallow(<Counter counter={1} {...actions} />);
+  const component = shallow(<CounterAny
+    counter={1} {...actions}
+  />);
   return {
     component,
     actions,

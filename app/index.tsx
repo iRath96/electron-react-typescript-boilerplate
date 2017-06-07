@@ -1,19 +1,29 @@
 import * as React from 'react';
 import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-import { Router, hashHistory } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
-import routes from './routes';
+import { AppContainer } from 'react-hot-loader';
+import Root from './containers/Root';
 import './app.global.scss';
 
-let configureStore = require('./store/configureStore');
+console.log(AppContainer);
 
+const { configureStore, history } = require('./store/configureStore');
 const store = configureStore();
-const history = syncHistoryWithStore(hashHistory, store);
 
 render(
-  <Provider store={store}>
-    <Router history={history} routes={routes} />
-  </Provider>,
+  <AppContainer>
+    <Root store={store} history={history} />
+  </AppContainer>,
   document.getElementById('root')
 );
+
+if ((module as any).hot) {
+  (module as any).hot.accept('./containers/Root', () => {
+    const NextRoot = require('./containers/Root');
+    render(
+      <AppContainer>
+        <NextRoot store={store} history={history} />
+      </AppContainer>,
+      document.getElementById('root')
+    );
+  });
+}
