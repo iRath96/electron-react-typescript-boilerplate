@@ -4,8 +4,6 @@ import { AppContainer } from 'react-hot-loader';
 import Root from './containers/Root';
 import './app.global.scss';
 
-console.log(AppContainer);
-
 const { configureStore, history } = require('./store/configureStore');
 const store = configureStore();
 
@@ -18,7 +16,7 @@ render(
 
 if ((module as any).hot) {
   (module as any).hot.accept('./containers/Root', () => {
-    const NextRoot = require('./containers/Root');
+    const NextRoot = require('./containers/Root').default;
     render(
       <AppContainer>
         <NextRoot store={store} history={history} />
