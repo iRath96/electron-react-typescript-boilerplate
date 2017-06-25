@@ -12,7 +12,7 @@ export interface IProps extends RouteComponentProps<any> {
   counter: number
 }
 
-export class Counter extends React.Component<IProps, void> {
+export class Counter extends React.Component<IProps> {
   render() {
     const { increment, incrementIfOdd, incrementAsync, decrement, counter } = this.props;
     return (
