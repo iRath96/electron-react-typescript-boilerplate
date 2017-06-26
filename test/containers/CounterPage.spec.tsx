@@ -2,17 +2,20 @@ import { expect } from 'chai';
 import * as React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'react-router-redux';
 import CounterPage from '../../app/containers/CounterPage';
 import { IState } from '../../app/reducers';
 
 const CounterPageAny = CounterPage as any;
-let configureStore = require('../../app/store/configureStore');
+let { configureStore, history } = require('../../app/store/configureStore');
 
 function setup(initialState?: IState) {
   const store = configureStore(initialState);
   const app = mount(
     <Provider store={store}>
-      <CounterPageAny />
+      <ConnectedRouter history={history}>
+        <CounterPageAny />
+      </ConnectedRouter>
     </Provider>
   );
   return {
