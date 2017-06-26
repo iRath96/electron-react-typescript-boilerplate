@@ -47,7 +47,6 @@
   "build": {
     "productName": "ElectronReactTypescript",
     "appId": "io.github.irath96.ElectronReactTypescript",
-    "category": "public.app-category.tools",
     "dmg": {
       "contents": [
         {
