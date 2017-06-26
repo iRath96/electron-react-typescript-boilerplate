@@ -3,11 +3,10 @@
  */
 
 const webpack = require('webpack');
-const validate = require('webpack-validator');
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.config.base');
 
-module.exports = validate(merge(baseConfig, {
+module.exports = merge(baseConfig, {
   devtool: 'source-map',
 
   entry: ['./app/main.development'],
@@ -47,4 +46,4 @@ module.exports = validate(merge(baseConfig, {
     __dirname: false,
     __filename: false
   },
-}));
+});

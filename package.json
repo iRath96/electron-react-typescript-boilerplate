@@ -5,9 +5,10 @@
   "description": "Electron application boilerplate based on TypeScript, React, React Router, Webpack, React Hot Loader for rapid application development",
   "main": "main.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=test mocha --retries 2 --require ts-node/register --recursive --require ./test/setup.ts test/**/*.spec.ts test/**/*.spec.tsx",
+    "test": "cross-env NODE_ENV=test node --trace-warnings ./test/runTests.js",
+    "test-all": "npm run test && npm run build && npm run test-e2e",
     "test-watch": "npm test -- --watch",
-    "test-e2e": "cross-env NODE_ENV=test mocha --retries 2 --require ts-node/register --require ./test/setup.ts ./test/e2e.ts",
+    "test-e2e": "cross-env NODE_ENV=test node --trace-warnings ./test/runTests.js e2e",
     "hot-server": "cross-env NODE_ENV=development node --max_old_space_size=2096 server.js",
     "build-main": "cross-env NODE_ENV=production node ./node_modules/webpack/bin/webpack --config webpack.config.electron.js --progress --profile --colors",
     "build-renderer": "cross-env NODE_ENV=production node ./node_modules/webpack/bin/webpack --config webpack.config.production.js --progress --profile --colors",
@@ -21,6 +22,27 @@
     "package-linux": "npm run build && build --linux",
     "package-all": "npm run build && build -mwl",
     "cleanup": "mop -v"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/internals/mocks/fileMock.js",
+      "\\.(css|less|sass|scss)$": "identity-obj-proxy"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "app/node_modules"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "<rootDir>/test/preprocessor.js"
+    },
+    "testMatch": [
+      "**/?(*.)(spec|test).ts?(x)"
+    ]
   },
   "build": {
     "productName": "ElectronReactTypescript",
@@ -90,11 +112,10 @@
   ],
   "homepage": "https://github.com/irath96/electron-react-typescript-boilerplate#readme",
   "devDependencies": {
-    "@types/chai": "^4.0.1",
     "@types/enzyme": "^2.5.39",
     "@types/history": "^4.5.2",
+    "@types/jest": "^20.0.2",
     "@types/jsdom": "^11.0.0",
-    "@types/mocha": "^2.2.34",
     "@types/node": "^8.0.2",
     "@types/react": "^15.0.31",
     "@types/react-dom": "^15.5.1",
@@ -107,7 +128,6 @@
     "@types/sinon": "^2.3.1",
     "asar": "^0.13.0",
     "boiler-room-custodian": "^0.6.2",
-    "chai": "^4.0.2",
     "concurrently": "^3.1.0",
     "cross-env": "^5.0.1",
     "css-loader": "^0.28.4",
@@ -121,9 +141,9 @@
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.24.1",
-    "jsdom": "^11.0.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^20.0.4",
     "json-loader": "^0.5.4",
-    "mocha": "^3.2.0",
     "node-sass": "^4.1.1",
     "react-addons-test-utils": "^15.4.1",
     "react-hot-loader": "^3.0.0-beta.6",
@@ -137,11 +157,10 @@
     "tslint": "^5.4.3",
     "typescript": "^2.1.4",
     "url-loader": "^0.5.7",
-    "webpack": "^3.0.0",
+    "webpack": "^2.6.1",
     "webpack-dev-middleware": "^1.9.0",
     "webpack-hot-middleware": "^2.13.2",
-    "webpack-merge": "^4.1.0",
-    "webpack-validator": "^3.0.0"
+    "webpack-merge": "^2.0.0"
   },
   "dependencies": {
     "electron-debug": "^1.1.0",

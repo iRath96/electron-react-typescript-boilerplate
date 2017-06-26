@@ -5,15 +5,12 @@
  */
 
 const webpack = require('webpack');
-const validate = require('webpack-validator');
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.config.base');
 
 const port = process.env.PORT || 3000;
 
-module.exports = validate(merge(baseConfig, {
-  debug: true,
-
+module.exports = merge(baseConfig, {
   devtool: 'inline-source-map',
 
   entry: [
@@ -51,11 +48,100 @@ module.exports = validate(merge(baseConfig, {
         ]
       },
 
-      { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff' },
-      { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff' },
-      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream' },
-      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file' },
-      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml' },
+      // Add SASS support  - compile all .global.scss files and pipe it to style.css
+      {
+        test: /\.global\.scss$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ]
+      },
+      // Add SASS support  - compile all other .scss files and pipe it to style.css
+      {
+        test: /^((?!\.global).)*\.scss$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              sourceMap: true,
+              importLoaders: 1,
+              localIdentName: '[name]__[local]__[hash:base64:5]',
+            }
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ]
+      },
+
+      // WOFF Font
+      {
+        test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 10000,
+            mimetype: 'application/font-woff',
+          }
+        },
+      },
+      // WOFF2 Font
+      {
+        test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 10000,
+            mimetype: 'application/font-woff',
+          }
+        }
+      },
+      // TTF Font
+      {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 10000,
+            mimetype: 'application/octet-stream'
+          }
+        }
+      },
+      // EOT Font
+      {
+        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+        use: 'file-loader',
+      },
+      // SVG Font
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 10000,
+            mimetype: 'image/svg+xml',
+          }
+        }
+      },
+      // Common Image Formats
+      {
+        test: /\.(?:ico|gif|png|jpg|jpeg|webp)$/,
+        use: 'url-loader',
+      }
     ]
   },
 
@@ -63,16 +149,18 @@ module.exports = validate(merge(baseConfig, {
     // https://webpack.github.io/docs/hot-module-replacement-with-webpack.html
     new webpack.HotModuleReplacementPlugin(),
 
-    // “If you are using the CLI, the webpack process will not exit with an error code by enabling this plugin.”
-    // https://github.com/webpack/docs/wiki/list-of-plugins#noerrorsplugin
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
 
     // NODE_ENV should be production so that modules do not perform certain development checks
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development')
-    })
+    }),
+
+    new webpack.LoaderOptionsPlugin({
+      debug: true
+    }),
   ],
 
   // https://github.com/chentsulin/webpack-target-electron-renderer#how-this-module-works
   target: 'electron-renderer'
-}));
+});
