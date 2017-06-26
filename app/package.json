@@ -1,7 +1,18 @@
 {
-  "name": "app",
-  "version": "0.0.0",
-  "description": "My fantastic app",
-  "author": "Elvis",
-  "main": "./main.js"
+  "name": "electron-react-typescript-boilerplate",
+  "productName": "electron-typescript-react-boilerplate",
+  "version": "1.0.0",
+  "description": "Electron application boilerplate based on TypeScript, React, React Router, Webpack, React Hot Loader for rapid application development",
+  "main": "./main.js",
+  "author": {
+    "name": "Alexander Rath",
+    "email": "irath96@gmail.com",
+    "url": "https://github.com/irath96"
+  },
+  "scripts": {
+    "postinstall": "npm rebuild --runtime=electron --target=1.6.6 --disturl=https://atom.io/download/atom-shell --build-from-source"
+  },
+  "license": "MIT",
+  "dependencies": {
+  }
 }
