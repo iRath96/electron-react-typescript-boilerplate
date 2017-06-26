@@ -4,9 +4,6 @@ import * as path from 'path';
 
 const { Application } = require('spectron');
 
-const homeStyles = require('../app/components/Home.scss');
-const counterStyles = require('../app/components/Counter.scss');
-
 const delay = (time: number) => new Promise(resolve => setTimeout(resolve, time));
 
 describe('main window', function spec() {
@@ -27,10 +24,10 @@ describe('main window', function spec() {
     }
   });
 
-  const findCounter = () => app.client.element(`.${counterStyles.counter}`);
+  const findCounter = () => app.client.element('[data-tid="counter"]');
 
   const findButtons = async () => {
-    const { value } = await app.client.elements(`.${counterStyles.btn}`);
+    const { value } = await app.client.elements('[data-tclass="btn"]');
     return value.map((btn: any) => btn.ELEMENT);
   };
 
@@ -43,10 +40,22 @@ describe('main window', function spec() {
     expect(title).to.equal('Hello Electron React!');
   });
 
+  it('should haven\'t any logs in console of main window', async () => {
+    const { client } = app;
+    const logs = await client.getRenderProcessLogs();
+    // Print renderer process logs
+    logs.forEach((log: any) => {
+      console.log(log.message);
+      console.log(log.source);
+      console.log(log.level);
+    });
+    expect(logs.length).to.eq(0);
+  });
+
   it('should to Counter with click "to Counter" link', async () => {
     const { client } = app;
 
-    await client.click(`.${homeStyles.container} > a`);
+    await client.click('[data-tid="container"] > a');
     expect(await findCounter().getText()).to.equal('0');
   });
 
@@ -96,11 +105,11 @@ describe('main window', function spec() {
   it('should back to home if back button clicked', async () => {
     const { client } = app;
     await client.element(
-      `.${counterStyles.backButton} > a`
+      '[data-tid="backButton"] > a'
     ).click();
 
     expect(
-      await client.isExisting(`.${homeStyles.container}`)
+      await client.isExisting('[data-tid="container"]')
     ).to.be.true;
   });
 });
