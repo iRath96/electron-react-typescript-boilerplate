@@ -100,11 +100,12 @@ describe('main window', function spec() {
     expect(await findCounter().getText()).toBe('3');
   });
 
-  it('should back to home if back button clicked', async () => {
+  it('should navigate to home using back button', async () => {
     const { client } = app;
     await client.element(
       '[data-tid="backButton"] > a'
     ).click();
+    await delay(100);
 
     expect(
       await client.isExisting('[data-tid="container"]')
