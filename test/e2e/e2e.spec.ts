@@ -49,10 +49,11 @@ describe('main window', function spec() {
     expect(logs).toHaveLength(0);
   });
 
-  it('should to Counter with click "to Counter" link', async () => {
+  it('should navigate to Counter by "to Counter" link', async () => {
     const { client } = app;
 
     await client.click('[data-tid="container"] > a');
+    await delay(100);
     expect(await findCounter().getText()).toBe('0');
   });
 
