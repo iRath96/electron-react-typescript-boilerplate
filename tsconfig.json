@@ -4,6 +4,7 @@
     "moduleResolution": "node",
     "module": "commonjs",
     "jsx": "react",
+    "types": [],
 
     "alwaysStrict": true,
     "strictNullChecks": true,
@@ -27,10 +28,9 @@
     "app/**/*.tsx",
     "test/**/*.ts",
     "test/**/*.tsx",
-    "typings/index.d.ts"
+    "node_modules/@types/**/*.d.ts"
   ],
   "exclude": [
-    "node_modules",
     "dist"
   ]
 }
