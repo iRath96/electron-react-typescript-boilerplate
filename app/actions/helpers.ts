@@ -1,11 +1,11 @@
-import * as Redux from "redux";
+import { Reducer, Action } from 'redux';
 
-export interface IAction extends Redux.Action {}
+export interface IAction extends Action {}
 export interface IActionWithPayload<T> extends IAction {
   readonly payload: T;
 }
 
-interface IActionCreator<T> {
+interface IActionCreator<T> extends Reducer<T> {
   readonly type: string;
   (payload: T): IActionWithPayload<T>;
 
