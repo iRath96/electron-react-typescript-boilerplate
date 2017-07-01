@@ -133,6 +133,7 @@
     "devtron": "^1.4.0",
     "electron": "^1.4.12",
     "electron-builder": "^19.8.0",
+    "electron-builder-http": "^19.7.2",
     "electron-devtools-installer": "^2.0.1",
     "enzyme": "^2.7.0",
     "express": "^4.14.0",
