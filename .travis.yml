@@ -3,52 +3,49 @@ sudo: false
 language: node_js
 
 node_js:
-  - 7
-  - 6
+- 8
+- 7
 
 cache:
+  yarn: true
   directories:
-    - node_modules
-
-# Enable when https://github.com/yarnpkg/yarn/issues/1233 and
-# https://github.com/yarnpkg/yarn/issues/1059 are resolved and disable npm cache
-#
-# cache:
-#   directories:
-#   - $HOME/.yarn-cache
+  - node_modules
+  - app/node_modules
 
 addons:
   apt:
     sources:
-      - ubuntu-toolchain-r-test
+    - ubuntu-toolchain-r-test
     packages:
-      - g++-4.8
-      - icnsutils
-      - graphicsmagick
-      - xz-utils
-      - xorriso
+    - g++-4.8
+    - icnsutils
+    - graphicsmagick
+    - xz-utils
+    - xorriso
+
+before_install: yarn global add greenkeeper-lockfile@1
 
 install:
-  - export CXX="g++-4.8"
-  - npm install -g npm@latest
-  - npm install
-  - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
-
-# Enable when https://github.com/yarnpkg/yarn/issues/1233 and
-# https://github.com/yarnpkg/yarn/issues/1059 are resolved and disable npm cache
-#
-# install:
-#   - export CXX="g++-4.8"
-#   - npm install -g yarnpkg
-#   - yarn
-#   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
+- export CXX="g++-4.8"
+- yarn
+- cd app && yarn && cd ..
+- /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile
+  --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
 
 before_script:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start &
-  - sleep 3
+- greenkeeper-lockfile-update
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start &
+- sleep 3
 
 script:
-  - npm run test
-  - npm run test-e2e
-  - npm run package
+- node --version
+- yarn package
+- yarn test
+- yarn test-e2e
+
+after_script: greenkeeper-lockfile-upload
+
+env:
+  global:
+    secure: hH+MmHE3WhyyBflZoOZLqqr501OOnvA1VtaqF3WU9rJCpjnKb4fZvHejYtVw65Ho2C40G2a34oBGxnT6INF1BfClYz4IMijL689xuR8dgStQzvcpMTwEQkrLsaCTSqXJR6nzqbRRGmaRfjSLdF6vhd3bGmtVNMEtoEky5EsXeBVjn8D5WMrme17m4F4D/qjHty6Xr5PjZL6eInVKlPZEbALYBhnIWqE5Xw6LcGa8JkqsWw80sLNtz4yWQSwkjrZ1lzCNd/GSUDN5K/BFK6kUZB5HpJZUzUoIQyXmEft+ALZFE4p4tX/H044JguPN9sKsP4SNkz2+3tOMevz/x5of3ssLMqB7gFtd5SGKwjdn6sWYNHKeM0MALyXAARhilyzY0v+xf226ZLRb++8Ih/vAZNymvQjn0idBfwC8ffUSXEx786Zysot1AqWrxaktKFHkBHkiQ4BGkAXVT4FLCgLtdMta+NLYYmuNrmXoU2iEhSzwvZmw94wcBxZie+TvuXE76TgrOiopRPbGXw/0iDm8J1MVWpoPmqSLUG5Vbq9fSNZnR/6j89j7Ws83fdnfZby+qOcV5WMJetQs/EHTxfWJu/AM6bxCYSSmXEJUb8dHpk8el8T+MGLI9pCTiiyy1ozOeo1WKpcOdmF6GU64EOxRWn2837+a9W0kXXAj6tPCW6A=
