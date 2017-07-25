@@ -70,6 +70,10 @@
       "main.js.map",
       "package.json"
     ],
+    "directories": {
+      "buildResources": "resources",
+      "output": "release"
+    },
     "win": {
       "target": "nsis"
     },
@@ -79,10 +83,6 @@
         "AppImage"
       ]
     }
-  },
-  "directories": {
-    "buildResources": "resources",
-    "output": "release"
   },
   "bin": {
     "electron": "./node_modules/.bin/electron"
@@ -115,12 +115,12 @@
     "@types/history": "^4.5.2",
     "@types/jest": "^20.0.2",
     "@types/node": "^8.0.2",
-    "@types/react": "^15.0.31",
+    "@types/react": "^15.0.37",
     "@types/react-dom": "^15.5.1",
     "@types/react-hot-loader": "^3.0.1",
     "@types/react-redux": "^4.4.35",
     "@types/react-router": "^4.0.11",
-    "@types/react-router-dom": "^4.0.4",
+    "@types/react-router-dom": "^4.0.7",
     "@types/react-router-redux": "^5.0.2",
     "@types/redux-logger": "^3.0.0",
     "@types/sinon": "^2.3.1",
@@ -148,7 +148,7 @@
     "react-hot-loader": "^3.0.0-beta.6",
     "redux-logger": "^3.0.6",
     "sass-loader": "^6.0.6",
-    "sinon": "^2.3.5",
+    "sinon": "^2.3.8",
     "spectron": "^3.4.1",
     "style-loader": "^0.18.2",
     "ts-loader": "^2.2.0",
@@ -156,7 +156,7 @@
     "tslint": "^5.4.3",
     "typescript": "^2.4.1",
     "url-loader": "^0.5.7",
-    "webpack": "^2.6.1",
+    "webpack": "^3.3.0",
     "webpack-dev-middleware": "^1.9.0",
     "webpack-hot-middleware": "^2.13.2",
     "webpack-merge": "^2.0.0"
