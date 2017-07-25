@@ -70,6 +70,10 @@
       "main.js.map",
       "package.json"
     ],
+    "directories": {
+      "buildResources": "resources",
+      "output": "release"
+    },
     "win": {
       "target": "nsis"
     },
@@ -79,10 +83,6 @@
         "AppImage"
       ]
     }
-  },
-  "directories": {
-    "buildResources": "resources",
-    "output": "release"
   },
   "bin": {
     "electron": "./node_modules/.bin/electron"
