@@ -2166,9 +2166,9 @@ figures@^2.0.0:
   dependencies:
     escape-string-regexp "^1.0.5"
 
-file-loader@^0.11.2:
-  version "0.11.2"
-  resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-0.11.2.tgz#4ff1df28af38719a6098093b88c82c71d1794a34"
+file-loader@1.0.0-rc.0:
+  version "1.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-1.0.0-rc.0.tgz#690af883319eac4e2d01c96732f7beda6370e84a"
   dependencies:
     loader-utils "^1.0.2"
 
