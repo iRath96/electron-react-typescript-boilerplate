@@ -1,9 +1,15 @@
 {
   "compilerOptions": {
-    "target": "es2015",
+    "target": "es5",
     "moduleResolution": "node",
     "module": "commonjs",
     "jsx": "react",
+    "lib": [
+      "dom",
+      "es6",
+      "dom.iterable",
+      "scripthost"
+    ],
     "types": [],
 
     "alwaysStrict": true,
