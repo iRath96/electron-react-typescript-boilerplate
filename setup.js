@@ -54,7 +54,7 @@ module.exports = {
     },
     {
       file: 'app/components/Home.tsx',
-      pattern: /(h2|Link to)/
+      pattern: /(h2|Link)/
     }
   ],
   // add the following files to the project, mostly
