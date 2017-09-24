@@ -141,7 +141,7 @@
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.24.1",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^20.0.4",
+    "jest": "^21.0.1",
     "json-loader": "^0.5.4",
     "node-sass": "^4.1.1",
     "react-addons-test-utils": "^15.4.1",

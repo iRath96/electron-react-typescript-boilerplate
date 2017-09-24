@@ -17,9 +17,10 @@ declare const module: NodeModule & {
   }
 };
 
-const actionCreators = Object.assign({}, counterActions, {
-  push
-});
+const actionCreators = Object.assign({}, 
+  counterActions,
+  {push}
+);
 
 const logger = (<any>createLogger)({
   level: 'info',
