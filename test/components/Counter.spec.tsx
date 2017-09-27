@@ -1,3 +1,5 @@
+import '../utils/enzymeConfig';
+
 import { spy } from 'sinon';
 import * as React from 'react';
 import { shallow } from 'enzyme';
