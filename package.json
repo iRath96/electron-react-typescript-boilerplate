@@ -156,7 +156,7 @@
     "ts-node": "^3.1.0",
     "tslint": "^5.4.3",
     "typescript": "^2.4.1",
-    "url-loader": "^0.5.7",
+    "url-loader": "^0.6.1",
     "webpack": "^3.3.0",
     "webpack-dev-middleware": "^1.9.0",
     "webpack-hot-middleware": "^2.13.2",
