@@ -152,7 +152,7 @@
     "sinon": "^4.0.0",
     "spectron": "^3.4.1",
     "style-loader": "^0.19.0",
-    "ts-loader": "^2.2.0",
+    "ts-loader": "^3.1.0",
     "ts-node": "^3.1.0",
     "tslint": "^5.4.3",
     "typescript": "^2.4.1",
