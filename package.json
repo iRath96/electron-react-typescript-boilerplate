@@ -124,7 +124,7 @@
     "@types/react-router-redux": "^5.0.2",
     "@types/redux-logger": "^3.0.0",
     "@types/sinon": "^4.0.0",
-    "asar": "^0.13.0",
+    "asar": "^0.14.0",
     "boiler-room-custodian": "^0.6.2",
     "concurrently": "^3.1.0",
     "cross-env": "^5.0.1",
