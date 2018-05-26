@@ -1,13 +1,13 @@
 import * as electronPath from 'electron';
 import * as path from 'path';
-
-const { Application } = require('spectron');
+import { Application } from 'spectron';
 
 const delay = (time: number) => new Promise(resolve => setTimeout(resolve, time));
 
-describe('main window', function spec() {
-  let app: any;
+describe('main window', () => {
+  let app: Application;
   beforeAll(async () => {
+    // @ts-ignore
     app = new Application({
       path: electronPath,
       args: [path.join(__dirname, '..', '..', 'app')],
@@ -19,6 +19,7 @@ describe('main window', function spec() {
     if (app && app.isRunning()) {
       return app.stop();
     }
+    return;
   });
 
   const findCounter = () => app.client.element('[data-tid="counter"]');
@@ -54,61 +55,61 @@ describe('main window', function spec() {
 
     await client.click('[data-tid="container"] > a');
     await delay(100);
-    expect(await findCounter().getText()).toBe('0');
+    expect(await findCounter().getText()).toBe("0");
   });
 
-  it('should display updated count after increment button click', async () => {
+  it("should display updated count after increment button click", async () => {
     const { client } = app;
 
     const buttons = await findButtons();
     await client.elementIdClick(buttons[0]);  // +
-    expect(await findCounter().getText()).toBe('1');
+    expect(await findCounter().getText()).toBe("1");
   });
 
-  it('should display updated count after descrement button click', async () => {
+  it("should display updated count after descrement button click", async () => {
     const { client } = app;
 
     const buttons = await findButtons();
     await client.elementIdClick(buttons[1]);  // -
-    expect(await findCounter().getText()).toBe('0');
+    expect(await findCounter().getText()).toBe("0");
   });
 
-  it('shouldn\'t change if even and if odd button clicked', async () => {
+  it("shouldn't change if even and if odd button clicked", async () => {
     const { client } = app;
 
     const buttons = await findButtons();
     await client.elementIdClick(buttons[2]);  // odd
-    expect(await findCounter().getText()).toBe('0');
+    expect(await findCounter().getText()).toBe("0");
   });
 
-  it('should change if odd and if odd button clicked', async () => {
+  it("should change if odd and if odd button clicked", async () => {
     const { client } = app;
 
     const buttons = await findButtons();
     await client.elementIdClick(buttons[0]);  // +
     await client.elementIdClick(buttons[2]);  // odd
-    expect(await findCounter().getText()).toBe('2');
+    expect(await findCounter().getText()).toBe("2");
   });
 
-  it('should change if async button clicked and a second later', async () => {
+  it("should change if async button clicked and a second later", async () => {
     const { client } = app;
 
     const buttons = await findButtons();
     await client.elementIdClick(buttons[3]);  // async
-    expect(await findCounter().getText()).toBe('2');
+    expect(await findCounter().getText()).toBe("2");
     await delay(1000);
-    expect(await findCounter().getText()).toBe('3');
+    expect(await findCounter().getText()).toBe("3");
   });
 
-  it('should navigate to home using back button', async () => {
+  it("should navigate to home using back button", async () => {
     const { client } = app;
     await client.element(
-      '[data-tid="backButton"] > a'
+      "[data-tid=\"backButton\"] > a"
     ).click();
     await delay(100);
 
     expect(
-      await client.isExisting('[data-tid="container"]')
+      await client.isExisting("[data-tid=\"container\"]")
     ).toBe(true);
   });
 });
