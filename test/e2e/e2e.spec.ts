@@ -1,16 +1,16 @@
-import * as electronPath from "electron";
-import * as path from "path";
+import * as electronPath from 'electron';
+import * as path from 'path';
 
-const { Application } = require("spectron");
+const { Application } = require('spectron');
 
 const delay = (time: number) => new Promise(resolve => setTimeout(resolve, time));
 
-describe("main window", function spec() {
+describe('main window', function spec() {
   let app: any;
   beforeAll(async () => {
     app = new Application({
       path: electronPath,
-      args: [path.join(__dirname, "..", "..", "app")]
+      args: [path.join(__dirname, '..', '..', 'app')]
     });
     return app.start();
   });
@@ -28,13 +28,13 @@ describe("main window", function spec() {
     return value.map((btn: any) => btn.ELEMENT);
   };
 
-  it("should open window", async () => {
+  it('should open window', async () => {
     const { client, browserWindow } = app;
 
     await client.waitUntilWindowLoaded();
     await delay(500);
     const title = await browserWindow.getTitle();
-    expect(title).toBe("Hello Electron React!");
+    expect(title).toBe('Hello Electron React!');
   });
 
   // Disabling this for now since Electron 2.0.x has a bug on security warnings that was not released yet
@@ -57,23 +57,23 @@ describe("main window", function spec() {
 
     await client.click('[data-tid="container"] > a');
     await delay(100);
-    expect(await findCounter().getText()).toBe("0");
+    expect(await findCounter().getText()).toBe('0');
   });
 
-  it("should display updated count after increment button click", async () => {
+  it('should display updated count after increment button click', async () => {
     const { client } = app;
 
     const buttons = await findButtons();
     await client.elementIdClick(buttons[0]); // +
-    expect(await findCounter().getText()).toBe("1");
+    expect(await findCounter().getText()).toBe('1');
   });
 
-  it("should display updated count after descrement button click", async () => {
+  it('should display updated count after descrement button click', async () => {
     const { client } = app;
 
     const buttons = await findButtons();
     await client.elementIdClick(buttons[1]); // -
-    expect(await findCounter().getText()).toBe("0");
+    expect(await findCounter().getText()).toBe('0');
   });
 
   it("shouldn't change if even and if odd button clicked", async () => {
@@ -81,29 +81,29 @@ describe("main window", function spec() {
 
     const buttons = await findButtons();
     await client.elementIdClick(buttons[2]); // odd
-    expect(await findCounter().getText()).toBe("0");
+    expect(await findCounter().getText()).toBe('0');
   });
 
-  it("should change if odd and if odd button clicked", async () => {
+  it('should change if odd and if odd button clicked', async () => {
     const { client } = app;
 
     const buttons = await findButtons();
     await client.elementIdClick(buttons[0]); // +
     await client.elementIdClick(buttons[2]); // odd
-    expect(await findCounter().getText()).toBe("2");
+    expect(await findCounter().getText()).toBe('2');
   });
 
-  it("should change if async button clicked and a second later", async () => {
+  it('should change if async button clicked and a second later', async () => {
     const { client } = app;
 
     const buttons = await findButtons();
     await client.elementIdClick(buttons[3]); // async
-    expect(await findCounter().getText()).toBe("2");
+    expect(await findCounter().getText()).toBe('2');
     await delay(1000);
-    expect(await findCounter().getText()).toBe("3");
+    expect(await findCounter().getText()).toBe('3');
   });
 
-  it("should navigate to home using back button", async () => {
+  it('should navigate to home using back button', async () => {
     const { client } = app;
     await client.element('[data-tid="backButton"] > a').click();
     await delay(100);
