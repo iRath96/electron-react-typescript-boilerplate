@@ -1,16 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
+    "jsx": "react",
     "moduleResolution": "node",
     "module": "commonjs",
-    "jsx": "react",
-    "lib": [
-      "dom",
-      "es6",
-      "dom.iterable",
-      "scripthost"
-    ],
-    "types": [],
+    "lib": ["dom", "es6", "dom.iterable", "scripthost"],
+    "types": ["node"],
     "typeRoots": ["../node_modules/@types", "../node_modules/electron"],
 
     "alwaysStrict": true,
@@ -19,25 +14,13 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noUnusedLocals": true,
-    
+
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
 
     "sourceMap": true,
 
-    "outDir": "dist"
+    "outDir": "."
   },
-  "files": [
-    "app/index.tsx"
-  ],
-  "include": [
-    "app/**/*.ts",
-    "app/**/*.tsx",
-    "test/**/*.ts",
-    "test/**/*.tsx",
-    "node_modules/@types/**/*.d.ts"
-  ],
-  "exclude": [
-    "dist"
-  ]
+  "files": ["./main.development.ts"]
 }

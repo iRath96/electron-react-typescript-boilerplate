@@ -41,5 +41,7 @@ app/style.css.map
 dist
 main.js
 main.js.map
+app/main.development.js
+app/main.development.js.map
 
 .idea
