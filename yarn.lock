@@ -105,9 +105,17 @@
     "@types/react" "*"
     redux "^3.7.2"
 
-"@types/react-router@*", "@types/react-router@^4.0.11":
+"@types/react-router@*":
   version "4.0.15"
   resolved "https://registry.yarnpkg.com/@types/react-router/-/react-router-4.0.15.tgz#be8aaefc20afd968a5dbcffcf09060e6c2e8746e"
+  dependencies:
+    "@types/history" "*"
+    "@types/react" "*"
+
+"@types/react-router@^4.4.2":
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/@types/react-router/-/react-router-4.4.2.tgz#3436c8f825908be26137c9340f8690ef673dbb09"
+  integrity sha512-EkRC1pDzrDwZ0WRCtjuAAmBGuoKyPcnO5r7mzDnMB8E+R05VkDanAF25ONaCLd3TyM13F0bHOpKcQPWYs+gzhg==
   dependencies:
     "@types/history" "*"
     "@types/react" "*"
