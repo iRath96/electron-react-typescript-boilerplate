@@ -122,9 +122,10 @@
   dependencies:
     redux "^3.6.0"
 
-"@types/sinon@^4.0.0":
-  version "4.1.2"
-  resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-4.1.2.tgz#9085db9cc3288b0f12daceee20a26c4afd9c2dcd"
+"@types/sinon@^7.0.2":
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-7.0.2.tgz#234c03dd39bfa97616b28215caea3de043c63310"
+  integrity sha512-YvJOqPk4kh1eQyxuASDD4MDK27XWAhtw6hJ7rRayEOkkTpZkqDWpDb4OjLVzFGdapOuUgZdnqO+71Q3utCJtcA==
 
 "@types/strip-bom@^3.0.0":
   version "3.0.0"
