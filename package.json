@@ -160,7 +160,7 @@
     "webpack": "^3.3.0",
     "webpack-dev-middleware": "^2.0.3",
     "webpack-hot-middleware": "^2.13.2",
-    "webpack-merge": "^4.1.1"
+    "webpack-merge": "^4.2.1"
   },
   "dependencies": {
     "electron-debug": "^1.1.0",
