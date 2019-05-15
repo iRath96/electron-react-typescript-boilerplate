@@ -159,7 +159,7 @@
     "url-loader": "^0.6.1",
     "webpack": "^3.3.0",
     "webpack-dev-middleware": "^2.0.3",
-    "webpack-hot-middleware": "^2.13.2",
+    "webpack-hot-middleware": "^2.25.0",
     "webpack-merge": "^4.1.1"
   },
   "dependencies": {
