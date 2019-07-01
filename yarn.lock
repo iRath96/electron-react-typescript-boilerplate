@@ -38,9 +38,10 @@
   version "0.22.2"
   resolved "https://registry.yarnpkg.com/@types/cheerio/-/cheerio-0.22.2.tgz#539625874bc856086ad491c2fdc9b10c05ae308e"
 
-"@types/enzyme@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@types/enzyme/-/enzyme-3.1.1.tgz#102ebd9aa33fa15fd11477b6f701cde18cbe7de0"
+"@types/enzyme@^3.10.0":
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/@types/enzyme/-/enzyme-3.10.0.tgz#252356f8e447d7de06458399d269f4dbafecb7a5"
+  integrity sha512-ng4baHsyl8BxtW0xgEHBSUOrthfdct9RKgv75ntWEFbLRjwy/P+qIGT6z30GyWgDyIZ7teqvjehHKAvLMRWEoA==
   dependencies:
     "@types/cheerio" "*"
     "@types/react" "*"
