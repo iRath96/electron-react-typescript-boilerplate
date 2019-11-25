@@ -57,13 +57,14 @@
   version "8.0.32"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.32.tgz#869a716538b6eec65ab3893f183d557be3cda206"
 
+"@types/node@^12.12.13":
+  version "12.12.13"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.13.tgz#9790d9bbb99cda1ff077bcef37bee3d60281c175"
+  integrity sha512-fXr0NLUGMwrKj7Achj/jQfnZco024Lbmn5AT7uG846gb+mPL/zxh3mXTnadf4fLJM/tFWVauIadQ/uCa8LCzkg==
+
 "@types/node@^6.0.46":
   version "6.0.88"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.88.tgz#f618f11a944f6a18d92b5c472028728a3e3d4b66"
-
-"@types/node@^8.0.2":
-  version "8.0.27"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.27.tgz#13fbe7e92afeecebb843d7cea6c15b521e0000e1"
 
 "@types/node@^8.0.24":
   version "8.9.5"
