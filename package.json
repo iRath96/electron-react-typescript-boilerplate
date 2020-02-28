@@ -167,7 +167,7 @@
     "font-awesome": "^4.7.0",
     "history": "^4.6.1",
     "react": "^16.13.0",
-    "react-dom": "^16.0.0",
+    "react-dom": "^16.13.0",
     "react-redux": "^5.0.1",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
